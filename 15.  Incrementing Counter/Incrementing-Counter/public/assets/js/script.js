@@ -10,9 +10,8 @@ counters.forEach((counter) => {
       counter.innerText = `${Math.ceil(c + increment)}`;
 
       setTimeout(updateCounter, 1);
-    }
-      ese{
-          counter.innerText = target;
+    } else {
+      counter.innerText = target;
     }
   };
 
