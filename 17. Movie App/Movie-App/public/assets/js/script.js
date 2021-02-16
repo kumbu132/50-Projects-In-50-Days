@@ -20,7 +20,7 @@ async function getMovies(url) {
 function getRatingColor(rating) {
   let color = "";
   rating < 4
-    ? (color = "red")
+    ? (color = `red`)
     : rating < 6
     ? (color = "orange")
     : rating < 7.5
