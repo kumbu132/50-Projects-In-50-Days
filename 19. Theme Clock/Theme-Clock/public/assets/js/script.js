@@ -57,17 +57,17 @@ const setTime = () => {
   const seconds = time.getSeconds();
 
   hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(
-    clockHours,
+    clockHours + minutes / 60,
     0,
-    11,
+    12,
     0,
     360
   )}deg)`;
 
   minuteEl.style.transform = `translate(-50%, -100%) rotate(${scale(
-    minutes,
+    minutes + seconds / 60,
     0,
-    59,
+    60,
     0,
     360
   )}deg)`;
@@ -75,12 +75,14 @@ const setTime = () => {
   secondEl.style.transform = `translate(-50%, -100%) rotate(${scale(
     seconds,
     0,
-    59,
+    60,
     0,
     360
   )}deg)`;
 
-  secondEl.style.transition = `${seconds === 0 ? 'none' : 'all 1s linear'}`;
+  secondEl.style.transition = `${
+    seconds === 0 ? 'all 0.05s linear' : 'all 1s linear'
+  }`;
 
   timeEl.innerText = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 
@@ -93,6 +95,7 @@ const pad = (n) => {
   return n < 10 ? '0' + n : n;
 };
 
-setInterval(setTime, 500);
+setInterval(setTime, 10);
 const t = new Date();
 console.log(t.getDate());
+console.log(scale(15, 0, 60, 0, 360));
